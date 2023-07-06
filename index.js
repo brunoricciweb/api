@@ -35,6 +35,18 @@ app.get('/Ariel', (req,res)=>{
     res.send('Perro')
 })
 
+app.get('/suma', (req, res) => {
+    console.log('Entró a la función SUMA!');
+    let miVariable = parseInt(req.query.pepito)
+    let otraVariable = parseInt(req.query.pepe)
+    console.log('la variable es:', miVariable);
+    console.log('otra variable es:', otraVariable);
+
+    let resultado = miVariable + otraVariable;
+
+    res.send(`El resultado es: ${resultado}!!!`)
+})
+
 app.get('/login/:nombre', (req,res)=>{
     res.render("test",{nombre: req.params.nombre})
     // res.send(`Hola, bienvenido/a, ${req.params.nombre}. Inicie sesión.`)
