@@ -1,0 +1,12 @@
+html
+  head
+    title Comentario 
+  body
+  - var comentarios=comments
+    each c in comentarios 
+        h3= c.nombre
+            h3 dice 
+        span= c.comentario
+        br
+        span -----------
+    
