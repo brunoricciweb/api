@@ -2,13 +2,35 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const port = 3000
+app.use(express.json());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
+
+var comentarios = []
 
 app.get('/', (req, res) => {
     console.log('entró a /')
     res.send('Hola, mundo!')
-  })
+})
+
+app.get('/comentarios', (req, res) => {
+    console.log('entró a /')
+    res.render("comment",{comments: comentarios})
+})
+
+app.post('/crear',(req,res)=>{
+    console.log(req.body);
+
+    res.send(req.body); 
+});
+
+app.post('/comentario',(req,res)=>{
+    console.log(req.body);
+    comentarios.push({nombre: req.body.nombre,comentario: req.body.comentario})
+    res.json({"comentario":{nombre: req.body.nombre,comentario: req.body.comentario}})
+});
+
+
 
 app.get('/productos', (req,res)=>{
     res.json([
